@@ -56,64 +56,83 @@ export function useMediaQuery(query: string): boolean {
 }
 ```
 
-**Analisi: L'Errore Nascosto dell'Idratazione (Hydration)**
+**Analisi: Due Errori in Uno**
 
-A prima vista, questo hook sembra perfetto. Gestisce lo stato, gli eventi e la pulizia. Tuttavia, in un'applicazione Next.js (o qualsiasi app con SSR), questo codice nasconde un bug critico: un **errore di idratazione**.
+A prima vista, l'hook sembra quasi corretto. Tuttavia, un occhio esperto noterà che questo codice nasconde non uno, ma ben due problemi.
 
-1.  **Sul Server**: `useState(false)` inizializza il valore a `false`. Il server genera l'HTML con questo presupposto.
-2.  **Sul Client**: Durante l'idratazione, `useEffect` viene eseguito. Se la media query dell'utente è `true` (es. schermo largo), `setMatches(true)` viene chiamato immediatamente.
-3.  **Discrepanza**: React confronta l'HTML del server (basato su `false`) con il render del client (basato su `true`) e rileva una discrepanza, causando un errore in console e potenziali problemi di rendering.
+1.  **L'Errore di Tipo (Logica):** Il primo, più evidente, è un errore di tipo. La funzione `handleChange` si aspetta un `MediaQueryListEvent`, ma viene chiamata con `handleChange(mediaQueryList)`, che è di tipo `MediaQueryList`. È un errore logico che un compilatore TypeScript segnalerebbe e che dimostra una comprensione superficiale dell'API `matchMedia`.
 
-L'IA ha soddisfatto i requisiti letterali del prompt, ma non ha gestito questa sfumatura cruciale dell'ambiente SSR.
+2.  **L'Errore Nascosto (Hydration):** Il secondo è più sottile e specifico per l'ambiente SSR. Anche correggendo l'errore di tipo, l'approccio di base rimane fallace.
+    - **Sul Server**: `useState(false)` imposta il valore a `false`. Il server genera l'HTML con questo presupposto.
+    - **Sul Client**: `useEffect` viene eseguito dopo il primo render. Se la media query dell'utente è `true`, `setMatches(true)` viene chiamato, causando un secondo render immediato.
+    - **Discrepanza**: React confronta l'HTML del server (basato su `false`) con il render del client (basato su `true`) e rileva una discrepanza, generando il famoso warning di "hydration mismatch" in console.
 
-### Come Guidare l'IA alla Correzione
+L'IA ha prodotto un codice che non solo contiene un errore di logica, ma fallisce anche nel requisito più complesso: essere veramente compatibile con l'SSR.
 
-Per far emergere questo problema, è necessario un prompt di revisione che specifichi il contesto di esecuzione.
+### Come Guidare l'IA alla Correzione Definitiva
 
-**Prompt di Revisione (Esempio):**
+Per ottenere una soluzione veramente robusta, dobbiamo essere più specifici e guidare l'IA verso le API moderne di React, pensate proprio per questi scenari.
 
-> Agisci come un esperto di Next.js. Analizza questo hook `useMediaQuery` specificamente per problemi legati al Server-Side Rendering e all'idratazione. Spiega perché il codice potrebbe causare un "hydration mismatch" e fornisci una soluzione robusta.
+**Prompt di Revisione (Avanzato):**
 
-Questo prompt mirato costringe l'IA a considerare il ciclo di vita completo del componente in Next.js, portando alla luce il problema.
+> Agisci come un esperto di React 19 e Next.js 15. Il seguente hook `useMediaQuery` causa un errore di tipo e un "hydration mismatch".
+>
+> Refattorizzalo usando l'hook `useSyncExternalStore` per creare una soluzione robusta, compatibile con il concurrent rendering e che non produca warning. Spiega brevemente perché `useSyncExternalStore` è lo strumento corretto per questo caso.
 
-### Il Codice Corretto
+Questo prompt non chiede solo di "correggere", ma indica lo strumento da usare (`useSyncExternalStore`), dimostrando una conoscenza più profonda e costringendo l'IA a generare il codice migliore possibile.
 
-La soluzione corretta garantisce che il primo rendering del client sia identico a quello del server, eseguendo l'aggiornamento dello stato solo dopo che il componente è stato montato.
+### Il Codice Corretto e Moderno
+
+Ecco la soluzione che un senior developer implementerebbe oggi, usando le API più recenti di React.
 
 ```typescript
-// hooks/useMediaQuery.ts - CORRETTO
+// hooks/useMediaQuery.ts - VERAMENTE CORRETTO
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+
+// Funzione che si sottoscrive ai cambiamenti dell'API del browser.
+// Esegue il `callback` ricevuto ogni volta che l'evento 'change' viene emesso.
+function subscribe(callback: () => void) {
+  window.addEventListener('change', callback);
+  return () => {
+    window.removeEventListener('change', callback);
+  };
+}
+
+// Funzione che legge il valore attuale "dallo store" (la nostra media query).
+// Viene usata sul client per ottenere il valore reale in modo sicuro.
+function getSnapshot(query: string): boolean {
+  return window.matchMedia(query).matches;
+}
+
+// Funzione che restituisce il valore da usare durante il Server-Side Rendering.
+// Poiché il server non conosce la viewport, restituiamo un default sicuro.
+function getServerSnapshot(): boolean {
+  return false;
+}
 
 export function useMediaQuery(query: string): boolean {
-  // Stato iniziale `false` sul server e nel primo render del client.
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mediaQueryList = window.matchMedia(query);
-
-    // Funzione per aggiornare lo stato
-    const updateMatches = () => setMatches(mediaQueryList.matches);
-
-    // Aggiorna lo stato al primo mount sul client per riflettere lo stato reale
-    updateMatches();
-
-    // Aggiungi il listener per i cambi futuri
-    mediaQueryList.addEventListener('change', updateMatches);
-
-    // Funzione di cleanup
-    return () => {
-      mediaQueryList.removeEventListener('change', updateMatches);
-    };
-  }, [query]);
+  // useSyncExternalStore è l'hook di React 18 per sottoscrivere a fonti esterne
+  // in modo sicuro per l'SSR e il concurrent rendering.
+  // Prende 3 argomenti:
+  // 1. subscribe: come iscriversi e disiscriversi agli eventi.
+  // 2. getSnapshot: come leggere il valore attuale sul client.
+  // 3. getServerSnapshot: come leggere il valore iniziale sul server.
+  const matches = useSyncExternalStore(
+    subscribe,
+    () => getSnapshot(query),
+    getServerSnapshot
+  );
 
   return matches;
 }
 ```
 
 **Analisi Finale:**
-Questo caso insegna che quando si generano hook o componenti che interagiscono con le API del browser, è fondamentale considerare (e specificare nel prompt) il contesto SSR per ottenere codice veramente robusto.
+Questo caso è emblematico. Dimostra che l'interazione con l'IA non è un processo a senso unico. Il primo output, sebbene apparentemente funzionale, era difettoso a più livelli. La nostra analisi critica (l'errore di tipo) e la conoscenza di problemi più profondi (l'hydration) ci hanno permesso di creare un prompt di revisione mirato.
+
+Il risultato finale, basato su `useSyncExternalStore`, non è solo una "correzione". È una soluzione di livello superiore: più semplice, più dichiarativa e costruita usando gli strumenti che React stesso fornisce per risolvere questa esatta classe di problemi. Questo è il vero valore aggiunto di un developer senior nel workflow con l'IA: non solo generare codice, ma guidare l'IA verso l'eccellenza architetturale.
 
 ---
 
