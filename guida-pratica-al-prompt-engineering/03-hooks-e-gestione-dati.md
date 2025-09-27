@@ -4,59 +4,7 @@ Un componente non è solo UI, è anche logica. In questo capitolo, vedremo come 
 
 ---
 
-### Caso 1: Creazione di un Custom Hook
-
-I custom hooks sono il modo migliore in React per estrarre e riutilizzare logica stateful. Chiediamo all'IA di crearne uno molto comune: `useMediaQuery`, per reagire ai cambi di viewport.
-
-**Prompt:**
-
-> Agisci come un senior React developer.
-> Crea un custom hook chiamato `useMediaQuery` in un file `useMediaQuery.ts`.
-> 
-> Requisiti:
-> 1.  L'hook deve accettare una stringa con una media query CSS (es. `'(min-width: 768px)'`).
-> 2.  Deve restituire un booleano che indica se la query è attualmente soddisfatta.
-> 3.  Deve funzionare correttamente anche in un ambiente di Server-Side Rendering (SSR) come Next.js, senza errori.
-> 4.  Deve aggiornare il suo stato ogni volta che la viewport cambia.
-> 5.  Deve gestire correttamente la pulizia degli event listener per evitare memory leak.
-
-**Output Generato (previsto):**
-
-```typescript
-// hooks/useMediaQuery.ts
-'use client';
-
-import { useState, useEffect } from 'react';
-
-export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    // window non è definito sul server, quindi eseguiamo questo codice solo sul client
-    const mediaQueryList = window.matchMedia(query);
-    
-    const handleChange = (event: MediaQueryListEvent) => {
-      setMatches(event.matches);
-    };
-
-    // Imposta lo stato iniziale
-    handleChange(mediaQueryList);
-
-    // Aggiungi il listener
-    mediaQueryList.addEventListener('change', handleChange);
-
-    // Funzione di cleanup per rimuovere il listener
-    return () => {
-      mediaQueryList.removeEventListener('change', handleChange);
-    };
-  }, [query]);
-
-  return matches;
-}
-```
-
-**Analisi:**
-L'IA ha generato un hook perfetto. Ha capito la necessità di usare `useEffect` per interagire con le API del browser, ha implementato correttamente la funzione di cleanup (fondamentale!) e ha gestito il caso SSR controllando implicitamente l'esistenza dell'oggetto `window`. Il codice è robusto e pronto per la produzione.
+### Caso 1: Creazione di un Custom Hook\n\nI custom hooks sono il modo migliore in React per estrarre e riutilizzare logica stateful. Chiediamo all\'IA di crearne uno molto comune: `useMediaQuery`, per reagire ai cambi di viewport.\n\n**Prompt:**\n\n> Agisci come un senior React developer.\n> Crea un custom hook chiamato `useMediaQuery` in un file `useMediaQuery.ts`.\n> \n> Requisiti:\n> 1.  L\'hook deve accettare una stringa con una media query CSS (es. `\'(min-width: 768px)\'`).\n> 2.  Deve restituire un booleano che indica se la query è attualmente soddisfatta.\n> 3.  Deve funzionare correttamente anche in un ambiente di Server-Side Rendering (SSR) come Next.js, senza errori.\n> 4.  Deve aggiornare il suo stato ogni volta che la viewport cambia.\n> 5.  Deve gestire correttamente la pulizia degli event listener per evitare memory leak.\n\n**Output Generato (previsto):**\n\n```typescript\n// hooks/useMediaQuery.ts\n\'use client\';\n\nimport { useState, useEffect } from \'react\';\n\nexport function useMediaQuery(query: string): boolean {\n  const [matches, setMatches] = useState(false);\n\n  useEffect(() => {\n    // window non è definito sul server, quindi eseguiamo questo codice solo sul client\n    const mediaQueryList = window.matchMedia(query);\n    \n    const handleChange = (event: MediaQueryListEvent) => {\n      setMatches(event.matches);\n    };\n\n    // Imposta lo stato iniziale\n    handleChange(mediaQueryList);\n\n    // Aggiungi il listener\n    mediaQueryList.addEventListener(\'change\handleChange);\n\n    // Funzione di cleanup per rimuovere il listener\n    return () => {\n      mediaQueryList.removeEventListener(\'change\', handleChange);\n    };\n  }, [query]);\n\n  return matches;\n}\n```\n\n**Analisi: L\'Errore Nascosto dell\'Idratazione (Hydration)**\n\nA prima vista, questo hook sembra perfetto. Gestisce lo stato, gli eventi e la pulizia. Tuttavia, in un\'applicazione Next.js (o qualsiasi app con SSR), questo codice nasconde un bug critico: un **errore di idratazione**.\n\n1.  **Sul Server**: `useState(false)` inizializza il valore a `false`. Il server genera l'HTML con questo presupposto.\n2.  **Sul Client**: Durante l\'idratazione, `useEffect` viene eseguito. Se la media query dell\'utente è `true` (es. schermo largo), `setMatches(true)` viene chiamato immediatamente. \n3.  **Discrepanza**: React confronta l\'HTML del server (basato su `false`) con il render del client (basato su `true`) e rileva una discrepanza, causando un errore in console e potenziali problemi di rendering.\n\nL\'IA ha soddisfatto i requisiti letterali del prompt, ma non ha gestito questa sfumatura cruciale dell'ambiente SSR.\n\n### Come Guidare l\'IA alla Correzione\n\nPer far emergere questo problema, è necessario un prompt di revisione che specifichi il contesto di esecuzione.\n\n**Prompt di Revisione (Esempio):**\n\n> Agisci come un esperto di Next.js. Analizza questo hook `useMediaQuery` specificamente per problemi legati al Server-Side Rendering e all\'idratazione. Spiega perché il codice potrebbe causare un \"hydration mismatch\" e fornisci una soluzione robusta.\n\nQuesto prompt mirato costringe l\'IA a considerare il ciclo di vita completo del componente in Next.js, portando alla luce il problema.\n\n### Il Codice Corretto\n\nLa soluzione corretta garantisce che il primo rendering del client sia identico a quello del server, eseguendo l\'aggiornamento dello stato solo dopo che il componente è stato montato.\n\n```typescript\n// hooks/useMediaQuery.ts - CORRETTO\n\'use client\';\n\nimport { useState, useEffect } from \'react\';\n\nexport function useMediaQuery(query: string): boolean {\n  // Stato iniziale `false` sul server e nel primo render del client.\n  const [matches, setMatches] = useState(false);\n\n  useEffect(() => {\n    const mediaQueryList = window.matchMedia(query);\n    \n    // Funzione per aggiornare lo stato\n    const updateMatches = () => setMatches(mediaQueryList.matches);\n\n    // Aggiorna lo stato al primo mount sul client per riflettere lo stato reale\n    updateMatches();\n\n    // Aggiungi il listener per i cambi futuri\n    mediaQueryList.addEventListener(\'change\', updateMatches);\n\n    // Funzione di cleanup\n    return () => {\n      mediaQueryList.removeEventListener(\'change\', updateMatches);\n    };\n  }, [query]);\n\n  return matches;\n}\n```\n\n**Analisi Finale:**\nQuesto caso insegna che quando si generano hook o componenti che interagiscono con le API del browser, è fondamentale considerare (e specificare nel prompt) il contesto SSR per ottenere codice veramente robusto.
 
 ---
 
@@ -127,8 +75,93 @@ const Parent = () => {
 };
 ```
 
-**Analisi:**
-L'IA ha eseguito un refactoring perfetto. Ha capito l'intento, ha creato un file separato per il contesto (best practice), ha implementato un `ThemeProvider` che contiene la logica di stato e ha creato un custom hook `useTheme` per un consumo pulito. Ha poi mostrato come i componenti `Child` e `GrandChild` vengono semplificati. Questo va ben oltre la semplice generazione di codice; è vera comprensione di un design pattern.
+**Analisi: L'Importanza della Supervisione Umana**
+
+A prima vista, si potrebbe concludere che "L'IA ha eseguito un refactoring perfetto". E in un certo senso, è vero: ha capito l'intento di usare la Context API e ha eliminato il "prop drilling".
+
+**Tuttavia, questo è un esempio magistrale di dove la supervisione di uno sviluppatore esperto è fondamentale.** Il codice generato è **sintatticamente corretto ma funzionalmente incompleto**.
+
+Il problema, che un'analisi più attenta rivela, è che il `ThemeProvider` crea la funzione `setTheme` ma non la rende mai disponibile al resto dell'app. Questo crea uno stato "leggi e non scrivere", rendendo impossibile cambiare il tema. L'IA ha risolto il problema specifico del prompt ("eliminare il prop drilling") ma non ha colto l'intento più ampio di creare un provider di tema *funzionale*.
+
+Questo non è un fallimento dell'IA, ma una dimostrazione del suo attuale modo di operare: ottimizza per il compito immediato che le viene assegnato.
+
+### Come Guidare l'IA a Trovare l'Errore
+
+Come si può guidare l'IA a riconoscere un errore di questo tipo? Con un prompt di follow-up ben costruito. Immaginiamo di presentare il codice generato all'IA con una nuova richiesta.
+
+**Prompt di Follow-up (Esempio):**
+
+> Agisci come un senior React developer che sta facendo una code review.
+> Analizza il seguente snippet di codice per il `ThemeProvider`. C'è qualcosa di sbagliato o mancante dal punto di vista funzionale? Spiega il tuo ragionamento passo dopo passo.
+> 
+> ```typescript
+> // [Incollare qui il codice del ThemeProvider generato]
+> ```
+
+Questo tipo di prompt è efficace perché usa diverse tecniche chiave:
+
+1.  **Assegnazione di Ruolo Specifica**: `Agisci come un senior React developer che sta facendo una code review`. Questo imposta un contesto di analisi critica, spingendo l'IA a cercare problemi non evidenti.
+2.  **Domanda Mirata**: `C'è qualcosa di sbagliato o mancante dal punto di vista funzionale?`. La domanda non si limita alla sintassi, ma si concentra sulla *funzionalità*, guidando l'IA a pensare all'uso pratico del codice.
+3.  **Richiesta di Ragionamento (Chain-of-Thought)**: `Spiega il tuo ragionamento passo dopo passo`. Questa è la parte più importante. Obbliga l'IA a esporre il suo processo di pensiero, facilitando la scoperta di problemi logici che una valutazione superficiale potrebbe mancare.
+
+Questo processo iterativo di generazione, revisione e interrogazione è il cuore del moderno workflow di sviluppo assistito dall'IA.
+
+### Il Codice Corretto e Funzionale
+
+Ecco come appare il codice dopo aver applicato la correzione emersa dal processo di revisione. La modifica chiave è esporre nel contesto anche una funzione per modificare lo stato.
+
+```typescript
+// 1. Creazione del Contesto (contexts/ThemeContext.tsx) - CORRETTO
+'use client';
+
+import { createContext, useContext, useState, ReactNode } from 'react';
+
+// Definiamo un tipo più completo per il valore del nostro contesto
+interface ThemeContextType {
+  theme: string;
+  toggleTheme: () => void;
+}
+
+// Forniamo valori di default che corrispondono al tipo
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  toggleTheme: () => console.warn('no theme provider'), // Funzione di avviso come default
+});
+
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  // Ora il value contiene sia il tema corrente che la funzione per cambiarlo
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => useContext(ThemeContext);
+
+// 2. Refactoring dei Componenti (invariato)
+// GrandChild.tsx, Child.tsx, e Parent.tsx rimangono come sopra.
+
+// 3. Esempio di componente che ORA PUÒ MODIFICARE il tema
+const ThemeSwitcher = () => {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <button onClick={toggleTheme} className="p-2 border rounded">
+      Passa al tema {theme === 'light' ? 'dark' : 'light'}
+    </button>
+  );
+};
+```
+
+**Analisi Finale:**
+Con questa correzione, il `ThemeProvider` non solo risolve il prop drilling, ma fornisce un sistema completo e funzionale per la gestione del tema. Questo dimostra come l'interazione critica e iterativa tra sviluppatore e IA porti a risultati robusti e pronti per la produzione.
+
 
 ---
 

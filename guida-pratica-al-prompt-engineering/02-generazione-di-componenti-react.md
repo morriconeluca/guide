@@ -52,8 +52,67 @@ const Tag: FC<TagProps> = ({ label, color }) => {
 export default Tag;
 ```
 
-**Analisi:**
-L'IA non si è limitata a usare un `if` o un `switch` per i colori. Ha riconosciuto che si tratta di varianti di un componente e ha usato `class-variance-authority` (`cva`), una libreria standard de-facto quando si lavora con Tailwind, per una soluzione molto più pulita e scalabile. Questo è un segno di un co-pilota che comprende le best practice, non solo la sintassi.
+**Analisi: L'Importanza della Code Review Assistita**
+
+Il codice generato sembra ottimo. L'IA ha persino usato una libreria avanzata come `cva`, dimostrando una comprensione delle best practice per i design system. A uno sguardo veloce, uno sviluppatore potrebbe approvare il codice e procedere.
+
+Tuttavia, immaginiamo che lo sviluppatore, per buona prassi, decida di non fidarsi ciecamente e chieda all'IA stessa di fare da "secondo paio d'occhi". Questo è un uso avanzato e incredibilmente potente dell'IA: non solo come generatore, ma come partner di code review.
+
+**Prompt di Code Review (Esempio):**
+
+> Agisci come un meticoloso senior TypeScript developer. Fai una code review del seguente componente React. Controlla la correttezza, la manutenibilità e il rispetto delle best practice di TypeScript. Spiega eventuali problemi che trovi.
+> 
+> ```typescript
+> // [Incollare qui il codice del componente Tag generato]
+> ```
+
+Facendo questa richiesta, l'IA è costretta a passare da una modalità "creativa" a una "analitica", e può scoprire i propri errori.
+
+**Risultato della Code Review dell'IA:**
+
+L'analisi critica rivela un errore sottile ma bloccante. La riga `interface TagProps extends FC<VariantProps<typeof tagVariants>>` non è una sintassi TypeScript valida. Un'`interface` non può "estendere" un tipo funzionale come `FC`. L'IA, nel tentativo di combinare i tipi, ha prodotto una sintassi errata che causerebbe un errore di compilazione.
+
+Questo dimostra un punto cruciale: anche quando il codice sembra corretto al 99%, un ciclo di revisione assistita può far emergere il restante 1%, salvando tempo di debugging.
+
+### Il Codice Corretto
+
+Ecco il codice come dovrebbe essere dopo aver corretto l'errore di tipo, usando l'intersezione di tipi (`&`), che è il modo corretto in TypeScript per combinare più definizioni di tipo.
+
+```typescript
+import type { FC } from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+
+const tagVariants = cva(
+  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  {
+    variants: {
+      color: {
+        blue: 'border-transparent bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100',
+        green: 'border-transparent bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
+      },
+    },
+    defaultVariants: {
+      color: 'blue',
+    },
+  }
+);
+
+// CORREZIONE: Si usa l'intersezione di tipi (&) per combinare
+// le props delle varianti con le props custom del componente.
+export type TagProps = VariantProps<typeof tagVariants> & {
+  label: string;
+};
+
+// L'uso di FC è opzionale; un approccio moderno è tipizzare direttamente le props.
+const Tag: FC<TagProps> = ({ label, color }) => {
+  return <div className={tagVariants({ color })}>{label}</div>;
+};
+
+export default Tag;
+```
+
+**Analisi Finale:**
+Questo caso dimostra che il workflow più efficace non è `prompt -> codice`, ma `prompt -> codice -> prompt di revisione -> codice finale`. Usare l'IA come partner di revisione è una strategia potente per aumentare la qualità e l'affidabilità del codice generato.
 
 ---
 
