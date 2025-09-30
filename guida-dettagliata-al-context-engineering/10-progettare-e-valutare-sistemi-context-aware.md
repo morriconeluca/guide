@@ -1,4 +1,4 @@
-# 10. Progettare e Valutare Sistemi Context-Aware
+# 14. Progettare e Valutare Sistemi Context-Aware
 
 Abbiamo esplorato i componenti, le tecniche e le architetture dei sistemi di Context Engineering. Ma come si progetta un sistema del genere da zero? E, una volta costruito, come facciamo a sapere se funziona bene? La natura probabilistica degli LLM rende il testing e la valutazione più complessi rispetto al software tradizionale.
 
@@ -75,4 +75,4 @@ Un approccio sistematico alla progettazione e una valutazione rigorosa basata su
 
 ---
 
-[< Indietro (Architetture)](./09-architetture-per-la-gestione-del-contesto.md) | [Torna all'Indice](./index.md) | [Avanti (Conclusione e Futuro) >](./11-conclusione-e-tendenze-future.md)
+[< Indietro (Model Context Protocol)](./13-model-context-protocol-mcp.md) | [Torna all'Indice](./index.md) | [Avanti (Conclusione e Futuro) >](./15-conclusione-e-tendenze-future.md)

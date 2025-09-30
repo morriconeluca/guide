@@ -86,7 +86,7 @@ Immaginiamo di voler dare a un assistente come Gemini CLI la capacità di legger
     ```"
     ````
 
-Questo esempio dimostra come il Tool Use permetta a un'applicazione AI di interagire in modo sicuro e strutturato con il sistema sottostante, trasformando richieste in linguaggio naturale in azioni concrete.
+Questo esempio dimostra come il Tool Use permetta a un'applicazione AI di interagire in modo sicuro e strutturato con il sistema sottostante, trasformando richieste in linguaggio naturale in azioni concrete. È importante notare che il processo descritto è interno alla CLI e non un comando shell che l'utente digita direttamente.
 
 ---
 

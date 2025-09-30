@@ -1,4 +1,4 @@
-# 11. Conclusione e Tendenze Future
+# 15. Conclusione e Tendenze Future
 
 Siamo giunti alla fine della nostra guida al Context Engineering. Abbiamo intrapreso un viaggio che ci ha portati dalla semplice creazione di un prompt alla progettazione di complessi ecosistemi informativi. Abbiamo visto come fornire a un LLM il contesto giusto, nel formato giusto e al momento giusto sia la chiave per sbloccare il suo vero potenziale.
 
@@ -24,7 +24,7 @@ Il campo del Context Engineering è in rapidissima evoluzione. Le tecniche che o
 
 La prossima frontiera del RAG è la creazione di sistemi "agentici". Invece di seguire un flusso di recupero-generazione predefinito, un agente AI può ragionare dinamicamente sul modo migliore per rispondere a una domanda.
 
-- **Come funziona:** Un Agentic RAG può, in autonomia, decidere di scomporre una domanda complessa in sotto-domande, interrogare più fonti di dati (un database interno e poi il web), confrontare i risultati, e persino decidere che le informazioni recuperate non sono sufficienti e tentare una nuova strategia di ricerca. Utilizza il ciclo **Reason-Act (ReAct)** in modo molto più sofisticato, pianificando ed eseguendo una vera e propria strategia di ricerca.
+- **Come funziona:** Un Agentic RAG può, in autonomia, decidere di scomporre una domanda complessa in sotto-domande, interrogare più fonti di dati (un database interno e poi il web), confrontare i risultati, e persino decidere che le informazioni recuperate non sono sufficienti e tentare una nuova strategia di ricerca. Utilizza il ciclo **Reason-Act (ReAct)** in modo molto più sofisticato, pianificando ed eseguendo una vera e propria strategia di ricerca, spesso facilitato da protocolli come il **Model Context Protocol (MCP)** per l'interazione standardizzata con strumenti e risorse esterne.
 - **Impatto:** Questo porterà a sistemi capaci di risolvere problemi aperti e multi-stadio con una supervisione umana minima.
 
 #### 2. Multimodal RAG: Un Contesto Oltre il Testo
@@ -53,4 +53,4 @@ Il viaggio nel Context Engineering è appena iniziato, e le opportunità per inn
 
 ---
 
-[< Indietro (Progettare e Valutare)](./10-progettare-e-valutare-sistemi-context-aware.md) | [Torna all'Indice](./index.md)
+[< Indietro (Progettare e Valutare)](./14-progettare-e-valutare-sistemi-context-aware.md) | [Torna all'Indice](./index.md)

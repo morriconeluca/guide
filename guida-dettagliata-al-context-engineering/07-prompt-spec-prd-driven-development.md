@@ -16,9 +16,9 @@ Il PDD è l'approccio più diretto e flessibile. Eleva il prompt da una semplice
 
   1.  **Definizione (Prompt):** Lo sviluppatore crea un prompt dettagliato in un file, ad esempio `crea_hook_debounce.prompt`:
       > "Agisci come un esperto di React. Crea un custom hook `useDebounce` in TypeScript. L'hook deve accettare `value` e `delay`. Deve restituire il valore solo dopo che `delay` millisecondi sono passati senza che `value` sia cambiato. Includi TSDoc e un esempio di utilizzo."
-  2.  **Generazione (CLI):** Lo sviluppatore esegue un comando che passa il prompt a Gemini CLI:
+  2.  **Generazione (CLI):** Lo sviluppatore esegue un comando che passa il prompt a Gemini CLI (il comando `gemini` esegue direttamente il prompt fornito come argomento):
       ```bash
-      gemini ai generate -p crea_hook_debounce.prompt > src/hooks/useDebounce.ts
+      gemini "$(cat crea_hook_debounce.prompt)" > src/hooks/useDebounce.ts
       ```
   3.  **Verifica e Test:** Lo sviluppatore ispeziona il codice generato e, se necessario, usa un altro prompt per generare i test.
   4.  **Iterazione:** Se serve una modifica (es. aggiungere un valore iniziale), lo sviluppatore non tocca il file `.ts`, ma aggiorna il file `.prompt` e riesegue il comando di generazione.
@@ -58,7 +58,9 @@ L'SDD è un approccio più strutturato e rigoroso. Invece di un prompt in lingua
       ```
   2.  **Generazione (CLI):** Gemini CLI viene invocato con la specifica come contesto principale:
       ```bash
-      gemini ai generate --spec api_validator.spec.yaml > src/validators/apiValidator.ts
+      # Il comando per la generazione da specifica non è direttamente supportato dalla versione attuale della CLI.
+      # La funzionalità di passare un file di specifica (`--spec`) non è presente nell'output di `gemini --help`.
+      # Potrebbe essere necessario un approccio diverso o un'estensione per supportare questo workflow.
       ```
   3.  **Test Automatico:** L'agente AI può usare la sezione `examples` della specifica per generare automaticamente unit test che verificano la correttezza dell'implementazione rispetto al contratto.
 
@@ -77,7 +79,7 @@ Questo approccio opera al livello più alto di astrazione. La fonte di verità n
   1.  **Contesto (PRD):** Un Product Manager scrive un PRD per una nuova feature, "Salvataggio Automatico". Il documento viene salvato in un percorso accessibile (es. `docs/prd-autosave.md`).
   2.  **Pianificazione (CLI):** Uno sviluppatore usa Gemini CLI fornendo il PRD come contesto:
       ```bash
-      gemini ai "Leggi il file docs/prd-autosave.md e proponi un piano di implementazione tecnico. Suddividi il lavoro in task, identifica i componenti React da creare e le modifiche necessarie al backend."
+      gemini "Leggi il file docs/prd-autosave.md e proponi un piano di implementazione tecnico. Suddividi il lavoro in task, identifica i componenti React da creare e le modifiche necessarie al backend."
       ```
   3.  **Generazione Guidata:** L'LLM produce un piano dettagliato. Lo sviluppatore può quindi usare questo piano per guidare le fasi successive, generando i singoli componenti o le funzioni API con prompt più specifici, sempre mantenendo il PRD come contesto di riferimento per assicurare l'allineamento con gli obiettivi di business.
 

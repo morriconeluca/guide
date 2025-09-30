@@ -10,7 +10,7 @@ In questo capitolo, analizzeremo due approcci avanzati che stanno definendo il f
 
 Il **BMAD (Breakthrough Method for Agile AI-Driven Development)** è un framework che struttura lo sviluppo AI-driven simulando un team di sviluppo agile composto da diversi **agenti AI specializzati**.
 
-- **Concetto Chiave:** Invece di usare un unico LLM generico, il BMAD assegna ruoli specifici (Product Manager, Architect, Developer, QA, etc.) a diversi agenti AI. Ogni agente ha un proprio contesto, istruzioni e obiettivi, e collabora con gli altri in un flusso di lavoro orchestrato. Questo approccio si basa su un Context Engineering molto sofisticato, dove ogni agente riceve solo le informazioni pertinenti per il suo ruolo.
+- **Concetto Chiave:** Invece di usare un unico LLM generico, il BMAD assegna ruoli specifici (Product Manager, Architect, Developer, QA, etc.) a diversi agenti AI. Ogni agente ha un proprio contesto, istruzioni e obiettivi, e collabora con gli altri in un flusso di lavoro orchestrato. Questo approccio si basa su un Context Engineering molto sofisticato, dove ogni agente riceve solo le informazioni pertinenti per il suo ruolo. Agenti come la Gemini CLI, con le sue capacità di tool-use e gestione del contesto, possono fungere da "Developer" o "QA" in questo framework.
 
 - **Workflow Esempio (con Gemini CLI come motore degli agenti):**
 

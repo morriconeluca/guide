@@ -34,13 +34,15 @@ Questa guida è pensata per fornirti le conoscenze e gli strumenti necessari per
 ## **Sezione IV: Architetture e Implementazioni Scalabili**
 
 - [9. Architetture per la Gestione del Contesto](./09-architetture-per-la-gestione-del-contesto.md)
+- [12. Gestione del Contesto con Gemini CLI](./12-gestione-context-con-gemini-cli.md)
+- [13. Il Model Context Protocol (MCP)](./13-model-context-protocol-mcp.md)
 
 ---
 
 ## **Sezione V: Integrazione, Valutazione e Futuro**
 
-- [10. Progettare e Valutare Sistemi Context-Aware](./10-progettare-e-valutare-sistemi-context-aware.md)
-- [11. Conclusione e Tendenze Future](./11-conclusione-e-tendenze-future.md)
+- [14. Progettare e Valutare Sistemi Context-Aware](./10-progettare-e-valutare-sistemi-context-aware.md)
+- [15. Conclusione e Tendenze Future](./11-conclusione-e-tendenze-future.md)
 
 ---
 
