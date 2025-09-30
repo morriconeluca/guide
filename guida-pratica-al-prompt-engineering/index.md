@@ -8,17 +8,18 @@ Meno teoria, più codice. Ogni capitolo è un caso d'uso concreto.
 
 ### Indice dei Capitoli
 
-*   [1. Setup del Workflow AI-Powered](./01-setup-del-workflow.md)
-*   [2. Generazione di Componenti React](./02-generazione-di-componenti-react.md)
-*   [3. Hooks Custom e Gestione Dati](./03-hooks-e-gestione-dati.md)
-*   [4. Styling Avanzato e Animazioni](./04-styling-e-animazioni.md)
-*   [5. Integrazione con Next.js 15 (Server-Centric)](./05-nextjs-15-server-centric.md)
-*   [6. Testing e Debugging Assistito](./06-testing-e-debugging.md)
-*   [7. La Tua Libreria di Prompt per il Frontend](./07-libreria-di-prompt.md)
+- [1. Setup del Workflow AI-Powered](./01-setup-del-workflow.md)
+- [2. Generazione di Componenti React](./02-generazione-di-componenti-react.md)
+- [3. Hooks Custom e Gestione Dati](./03-hooks-e-gestione-dati.md)
+- [4. Styling Avanzato e Animazioni](./04-styling-e-animazioni.md)
+- [5. Integrazione con Next.js 15 (Server-Centric)](./05-nextjs-15-server-centric.md)
+- [6. Testing e Debugging Assistito](./06-testing-e-debugging.md)
+- [7. La Tua Libreria di Prompt per il Frontend](./07-libreria-di-prompt.md)
 
-<br>
+---
 
 [< Torna all'Indice Generale](../README.md)
 
 ---
-*Questa guida è pensata per essere un "living document". Sperimenta con i prompt e adattali al tuo stile.*
+
+_Questa guida è pensata per essere un "living document". Sperimenta con i prompt e adattali al tuo stile._

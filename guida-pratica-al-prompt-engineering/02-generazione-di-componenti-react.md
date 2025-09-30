@@ -13,11 +13,12 @@ Il nostro primo task è creare un semplice componente `Tag`, riutilizzabile per 
 **Prompt:**
 
 > Agendo come un senior frontend developer, crea un componente React chiamato `Tag`.
-> 
+>
 > Requisiti:
+>
 > 1.  Deve essere un componente funzionale scritto in TypeScript (`.tsx`).
 > 2.  Accetta una prop `label` (stringa) da visualizzare.
-> 3.  Accetta una prop opzionale `color` che può essere `'blue'` o `'green'`. Il default è `'blue'`. 
+> 3.  Accetta una prop opzionale `color` che può essere `'blue'` o `'green'`. Il default è `'blue'`.
 > 4.  Usa le classi di Tailwind CSS per lo stile. Il tag deve avere padding, angoli arrotondati e colori di testo e sfondo diversi a seconda della prop `color`.
 
 **Output Generato (previsto):**
@@ -32,7 +33,8 @@ const tagVariants = cva(
     variants: {
       color: {
         blue: 'border-transparent bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100',
-        green: 'border-transparent bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
+        green:
+          'border-transparent bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
       },
     },
     defaultVariants: {
@@ -61,7 +63,7 @@ Tuttavia, immaginiamo che lo sviluppatore, per buona prassi, decida di non fidar
 **Prompt di Code Review (Esempio):**
 
 > Agisci come un meticoloso senior TypeScript developer. Fai una code review del seguente componente React. Controlla la correttezza, la manutenibilità e il rispetto delle best practice di TypeScript. Spiega eventuali problemi che trovi.
-> 
+>
 > ```typescript
 > // [Incollare qui il codice del componente Tag generato]
 > ```
@@ -88,7 +90,8 @@ const tagVariants = cva(
     variants: {
       color: {
         blue: 'border-transparent bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100',
-        green: 'border-transparent bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
+        green:
+          'border-transparent bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
       },
     },
     defaultVariants: {
@@ -123,8 +126,9 @@ Ora alziamo il livello: un componente che deve gestire il proprio stato. Creiamo
 **Prompt:**
 
 > Crea un componente React `QuantitySelector` in TypeScript.
-> 
+>
 > Requisiti:
+>
 > 1.  Deve mostrare un numero (la quantità) e due bottoni, uno "-" e uno "+".
 > 2.  La quantità deve essere gestita internamente con lo hook `useState`. Il valore iniziale deve essere 1.
 > 3.  Il bottone "-" è disabilitato se la quantità è 1.
@@ -173,7 +177,6 @@ const QuantitySelector: FC = () => {
 };
 
 export default QuantitySelector;
-
 ```
 
 **Analisi:**
@@ -189,8 +192,9 @@ Questo è un esempio avanzato che sfrutta le nuove feature di React 19 per sempl
 
 > Agisci come un esperto di React 19 e Next.js 15.
 > Crea un Server Component chiamato `UserProfile` che fa il fetch di dati da `https://api.example.com/users/{userId}`.
-> 
+>
 > Requisiti:
+>
 > 1.  Il componente deve accettare una prop `userId` (stringa).
 > 2.  Usa la `fetch` API nativa per chiamare l'endpoint.
 > 3.  **Usa il nuovo hook `use` di React 19 per gestire la Promise restituita dalla fetch.**

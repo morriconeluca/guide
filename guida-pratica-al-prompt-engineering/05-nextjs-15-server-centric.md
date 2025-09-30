@@ -4,7 +4,6 @@ Next.js ha rivoluzionato il modo in cui pensiamo il codice React, spostando gran
 
 ---
 
-
 ### Caso 1: Creare un Server Component per il Data Fetching
 
 I Server Components sono la modalità di default in Next.js. Possono essere `async` e fare data-fetching direttamente, senza `useEffect` o `useState`. Questo li rende incredibilmente snelli e performanti.
@@ -13,8 +12,9 @@ I Server Components sono la modalità di default in Next.js. Possono essere `asy
 
 > Agisci come un esperto di Next.js 15.
 > Crea un Server Component chiamato `RepoList` che fa il fetch dei repository più popolari di un utente GitHub.
-> 
+>
 > Requisiti:
+>
 > 1.  Il componente deve essere `async` e usare la `fetch` API.
 > 2.  Deve chiamare l'endpoint `https://api.github.com/users/vercel/repos`.
 > 3.  Deve renderizzare una lista non ordinata (`<ul>`) dei nomi dei repository.
@@ -52,7 +52,12 @@ const RepoList: FC = async () => {
       <ul className="list-disc space-y-2 pl-5">
         {repos.slice(0, 10).map((repo) => (
           <li key={repo.id}>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            <a
+              href={repo.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
               {repo.name}
             </a>
           </li>
@@ -87,7 +92,6 @@ L'IA ha creato un perfetto Server Component. Ha usato `async/await` direttamente
 
 ---
 
-
 ### Caso 2: Gestire Mutazioni con le Server Actions
 
 Le Server Actions sono funzioni asincrone che girano sul server ma possono essere chiamate direttamente da componenti client, ideali per le mutazioni di dati (es. form). Eliminano la necessità di creare endpoint API per semplici operazioni.
@@ -95,8 +99,9 @@ Le Server Actions sono funzioni asincrone che girano sul server ma possono esser
 **Prompt:**
 
 > Crea una Server Action per aggiungere un'email a una newsletter.
-> 
+>
 > Requisiti:
+>
 > 1.  Crea un file `app/newsletter/actions.ts`.
 > 2.  La funzione `subscribeToNewsletter` deve accettare un oggetto `FormData`.
 > 3.  Deve estrarre l'email, simulare un salvataggio nel database e restituire un messaggio di successo o errore.
@@ -110,7 +115,10 @@ Le Server Actions sono funzioni asincrone che girano sul server ma possono esser
 
 import { z } from 'zod';
 
-export async function subscribeToNewsletter(prevState: any, formData: FormData) {
+export async function subscribeToNewsletter(
+  prevState: any,
+  formData: FormData
+) {
   const schema = z.object({ email: z.string().email() });
   const parsed = schema.safeParse({ email: formData.get('email') });
 
@@ -126,18 +134,24 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
 }
 
 // app/newsletter/NewsletterForm.tsx
-'use client';
+('use client');
 
 import { useFormState, useFormStatus } from 'react-dom';
 import { subscribeToNewsletter } from './actions';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
-  return <button type="submit" disabled={pending}>{pending ? 'Invio...' : 'Iscriviti'}</button>;
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? 'Invio...' : 'Iscriviti'}
+    </button>
+  );
 }
 
 export function NewsletterForm() {
-  const [state, formAction] = useFormState(subscribeToNewsletter, { message: '' });
+  const [state, formAction] = useFormState(subscribeToNewsletter, {
+    message: '',
+  });
 
   return (
     <form action={formAction}>
@@ -154,7 +168,6 @@ Questo è un pattern avanzato che l'IA ha gestito perfettamente. Ha creato la Se
 
 ---
 
-
 ### Caso 3: Generare un Endpoint API (Route Handler)
 
 Quando hai bisogno di un vero endpoint API (es. per essere consumato da un'app mobile o da un altro servizio), i Route Handlers sono la soluzione.
@@ -162,8 +175,9 @@ Quando hai bisogno di un vero endpoint API (es. per essere consumato da un'app m
 **Prompt:**
 
 > Crea un Route Handler in Next.js 15 per cercare dei prodotti.
-> 
+>
 > Requisiti:
+>
 > 1.  Il file deve essere in `app/api/search/route.ts`.
 > 2.  Deve gestire le richieste `GET`.
 > 3.  Deve leggere un parametro di ricerca `q` dall'URL (es. `/api/search?q=scarpe`).
@@ -186,7 +200,10 @@ export async function GET(request: NextRequest) {
   const query = searchParams.get('q');
 
   if (!query) {
-    return NextResponse.json({ error: 'Il parametro di ricerca q è obbligatorio' }, { status: 400 });
+    return NextResponse.json(
+      { error: 'Il parametro di ricerca q è obbligatorio' },
+      { status: 400 }
+    );
   }
 
   const filteredProducts = allProducts.filter((product) =>
@@ -201,6 +218,5 @@ export async function GET(request: NextRequest) {
 L'IA ha generato un Route Handler perfetto e idiomatico per Next.js 15. Ha usato correttamente `NextRequest` per leggere i parametri dell'URL e `NextResponse` per inviare una risposta JSON, includendo anche la gestione dell'errore 400 se il parametro è mancante. Questo tipo di boilerplate è un task perfetto da delegare all'IA per risparmiare tempo.
 
 ---
-
 
 [< Indietro (Styling)](./04-styling-e-animazioni.md) | [Torna all'Indice](./index.md) | [Avanti (Testing) >](./06-testing-e-debugging.md)
