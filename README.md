@@ -14,6 +14,10 @@ Qui sotto trovi l'elenco delle guide attualmente disponibili. Ogni guida è un p
 
   _Un manuale pratico con esempi di codice per integrare l'IA nel workflow di sviluppo con React, Next.js e TypeScript._
 
+- ### [Guida Dettagliata a Gemini CLI](./guida-dettagliata-a-gemini-cli/index.md)
+
+  _Una guida completa per installare, configurare e padroneggiare l'agente AI di Google da riga di comando._
+
 - ### [Guida Dettagliata al Context Engineering](./guida-dettagliata-al-context-engineering/index.md)
   _Una guida approfondita su come costruire e gestire il contesto per i modelli linguistici di grandi dimensioni._
 
