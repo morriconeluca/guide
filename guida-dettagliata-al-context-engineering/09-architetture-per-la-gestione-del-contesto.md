@@ -26,7 +26,7 @@ Questo approccio a **microservizi**, dove ogni componente è un servizio indipen
 
 ### Deployment e Orchestrazione: Il Ruolo delle Piattaforme Multi-Container
 
-Una volta che abbiamo i nostri servizi, dobbiamo eseguirli, scalarli e gestirli. È qui che entrano in gioco le piattaforme di orchestrazione di container, che possiamo considerare il nostro **MCP (Multi-Container Platform)**. È fondamentale distinguere questo acronimo dal **Model Context Protocol (MCP)**, un protocollo standardizzato per la connessione di agenti AI a sistemi esterni, che approfondiremo in un capitolo dedicato.
+Una volta che abbiamo i nostri servizi, dobbiamo eseguirli, scalarli e gestirli. È qui che entrano in gioco le piattaforme di orchestrazione di container. È importante notare che il termine **Model Context Protocol (MCP)**, che analizzeremo in dettaglio, si riferisce a un protocollo di comunicazione software e non deve essere confuso con i concetti generali di gestione di piattaforme multi-container.
 
 - **Containerizzazione (Docker):** Ogni microservizio (l'orchestratore, il servizio RAG, etc.) viene impacchettato in un container Docker. Un container è un'unità leggera e portabile che include il codice e tutte le sue dipendenze, garantendo che il servizio funzioni in modo identico in qualsiasi ambiente.
 
@@ -41,7 +41,7 @@ Una volta che abbiamo i nostri servizi, dobbiamo eseguirli, scalarli e gestirli.
   - **Ottimizzazione dei Costi:** Si può scegliere il provider più economico per un determinato servizio o regione geografica.
   - **Accesso ai Migliori Servizi:** Permette di usare i servizi LLM o i database vettoriali più performanti di ciascun provider, combinando il meglio di ogni ecosistema.
 
-In sintesi, l'infrastruttura moderna basata su **Kubernetes** che orchestra **molteplici container** su uno o **molteplici provider cloud** fornisce la base scalabile e resiliente necessaria per le complesse applicazioni di Context Engineering. All'interno di questa architettura, il **Model Context Protocol (MCP)** gioca un ruolo cruciale nel permettere agli agenti AI di interagire in modo standardizzato con strumenti e risorse esterne, come esplorato nel capitolo dedicato.
+In sintesi, un'infrastruttura moderna basata su **Kubernetes** per l'orchestrazione di **molteplici container**, potenzialmente distribuiti su **molteplici provider cloud**, fornisce la base scalabile e resiliente necessaria per le complesse applicazioni di Context Engineering. È all'interno di queste architetture che un protocollo come il **Model Context Protocol (MCP)** gioca un ruolo cruciale, permettendo agli agenti AI di interagire in modo standardizzato con i vari servizi e strumenti esterni.
 
 ---
 

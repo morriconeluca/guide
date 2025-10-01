@@ -54,7 +54,7 @@ Un LLM, per quanto potente, non è un'entità onnisciente. Opera con tre vincoli
 
 Il Context Engineering non è una singola tecnica, ma un approccio olistico che integra diverse strategie. Si occupa di orchestrare un flusso dinamico di informazioni che permette all'LLM di funzionare al meglio delle sue capacità.
 
-Pensalo come la costruzione del "cervello" di un'applicazione AI, dove il modello linguistico è la CPU, ma il Context Engineering fornisce la RAM, l'hard disk e l'accesso a Internet. Strumenti come la Gemini CLI sono esempi concreti di come un agente AI possa orchestrare questo flusso informativo per interagire efficacemente con il mondo esterno.
+Pensalo come la costruzione del "cervello" di un'applicazione AI, dove il modello linguistico è la CPU, ma il Context Engineering fornisce la RAM, l'hard disk e l'accesso a Internet. Un agente AI come Gemini CLI, ad esempio, è un'implementazione pratica di questi principi: orchestra un flusso informativo complesso per comprendere le richieste e interagire efficacemente con l'ambiente di sviluppo.
 
 Nei prossimi capitoli, analizzeremo in dettaglio ogni componente di questo ecosistema, dalle tecniche di recupero dati (RAG) alla gestione della memoria, fino all'integrazione nel ciclo di vita dello sviluppo software.
 
