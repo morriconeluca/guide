@@ -53,4 +53,4 @@ Il viaggio nel Context Engineering è appena iniziato, e le opportunità per inn
 
 ---
 
-[< Indietro (Progettare e Valutare)](./12-progettare-e-valutare-sistemi-context-aware.md) | [Torna all'Indice](./index.md)
+[< Indietro (Progettare e Valutare)](./13-progettare-e-valutare-sistemi-context-aware.md) | [Torna all'Indice](./index.md)

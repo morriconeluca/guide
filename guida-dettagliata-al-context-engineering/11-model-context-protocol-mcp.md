@@ -48,4 +48,4 @@ In sintesi, l'MCP agisce come un "telecomando universale" o una "porta USB-C" pe
 
 ---
 
-[< Indietro (Gestione del Contesto con Gemini CLI)](./10-gestione-context-con-gemini-cli.md) | [Torna all'Indice](./index.md) | [Avanti (Progettare e Valutare)](./12-progettare-e-valutare-sistemi-context-aware.md)
+[< Indietro (Gestione del Contesto con Gemini CLI)](./10-gestione-context-con-gemini-cli.md) | [Torna all'Indice](./index.md) | [Avanti (Esempio Pratico MCP) >](./12-esempio-pratico-server-mcp-python.md)

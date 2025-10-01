@@ -36,13 +36,14 @@ Questa guida è pensata per fornirti le conoscenze e gli strumenti necessari per
 - [9. Architetture per la Gestione del Contesto](./09-architetture-per-la-gestione-del-contesto.md)
 - [10. Gestione del Contesto con Gemini CLI](./10-gestione-context-con-gemini-cli.md)
 - [11. Il Model Context Protocol (MCP)](./11-model-context-protocol-mcp.md)
+- [12. Esempio Pratico: Creare un Server MCP in Python](./12-esempio-pratico-server-mcp-python.md)
 
 ---
 
 ## **Sezione V: Integrazione, Valutazione e Futuro**
 
-- [12. Progettare e Valutare Sistemi Context-Aware](./12-progettare-e-valutare-sistemi-context-aware.md)
-- [13. Conclusione e Tendenze Future](./13-conclusione-e-tendenze-future.md)
+- [13. Progettare e Valutare Sistemi Context-Aware](./13-progettare-e-valutare-sistemi-context-aware.md)
+- [14. Conclusione e Tendenze Future](./14-conclusione-e-tendenze-future.md)
 
 ---
 

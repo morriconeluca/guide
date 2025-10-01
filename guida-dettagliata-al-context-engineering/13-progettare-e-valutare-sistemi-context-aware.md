@@ -75,4 +75,4 @@ Un approccio sistematico alla progettazione e una valutazione rigorosa basata su
 
 ---
 
-[< Indietro (Model Context Protocol)](./11-model-context-protocol-mcp.md) | [Torna all'Indice](./index.md) | [Avanti (Conclusione e Futuro) >](./13-conclusione-e-tendenze-future.md)
+[< Indietro (Esempio Pratico MCP)](./12-esempio-pratico-server-mcp-python.md) | [Torna all'Indice](./index.md) | [Avanti (Conclusione e Futuro) >](./14-conclusione-e-tendenze-future.md)
