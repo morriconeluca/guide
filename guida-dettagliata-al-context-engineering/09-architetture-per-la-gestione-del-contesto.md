@@ -53,4 +53,4 @@ In sintesi, l'infrastruttura moderna basata su **Kubernetes** che orchestra **mo
 
 ---
 
-[< Indietro (Metodologie Avanzate SDLC)](./08-metodologie-e-strumenti-avanzati-sdlc.md) | [Torna all'Indice](./index.md) | [Avanti (Progettare e Valutare) >](./12-progettare-e-valutare-sistemi-context-aware.md)
+[< Indietro (Metodologie Avanzate SDLC)](./08-metodologie-e-strumenti-avanzati-sdlc.md) | [Torna all'Indice](./index.md) | [Avanti (Gestione del Contesto con Gemini CLI)](./10-gestione-context-con-gemini-cli.md)
