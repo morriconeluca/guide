@@ -119,4 +119,4 @@ Questi strumenti trasformano Gemini CLI in un ambiente di sviluppo potenziato da
 
 ---
 
-[< 6. Configurazione Avanzata: `settings.json`](./06-configurazione-avanzata-settings-json.md) | [Torna all'Indice](./index.md) | [8. Estendere Gemini CLI: MCP e Extensions >](./08-estendere-gemini-cli-mcp-e-extensions.md)
+[< 6. Configurazione Avanzata: `settings.json`](./06-configurazione-avanzata-settings-json.md) | [Torna all'Indice](./index.md) | [Avanti (Esempio Pratico: Comando Custom) >](./08-esempio-pratico-comando-custom.md)

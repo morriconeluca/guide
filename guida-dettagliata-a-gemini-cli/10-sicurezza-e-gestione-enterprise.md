@@ -88,4 +88,4 @@ Queste funzionalità rendono Gemini CLI uno strumento gestibile e più sicuro an
 
 ---
 
-[< 8. Estendere Gemini CLI: MCP e Extensions](./08-estendere-gemini-cli-mcp-e-extensions.md) | [Torna all'Indice](./index.md) | [10. Appendice: Riferimento Rapido >](./10-appendice-riferimento-rapido.md)
+[< 9. Estendere Gemini CLI: MCP e Extensions](./09-estendere-gemini-cli-mcp-e-extensions.md) | [Torna all'Indice](./index.md) | [11. Appendice: Riferimento Rapido >](./11-appendice-riferimento-rapido.md)

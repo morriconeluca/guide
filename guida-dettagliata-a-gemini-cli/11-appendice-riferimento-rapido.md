@@ -49,4 +49,4 @@ Questo capitolo funge da "cheat sheet" per l'uso quotidiano di Gemini CLI. Conti
 
 ---
 
-[< 9. Sicurezza e Gestione Enterprise](./09-sicurezza-e-gestione-enterprise.md) | [Torna all'Indice](./index.md)
+[< 10. Sicurezza e Gestione Enterprise](./10-sicurezza-e-gestione-enterprise.md) | [Torna all'Indice](./index.md)

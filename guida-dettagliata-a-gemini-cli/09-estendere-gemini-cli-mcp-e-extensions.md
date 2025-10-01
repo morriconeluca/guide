@@ -74,4 +74,4 @@ Questo sistema permette alla community di creare e condividere "plugin" per Gemi
 
 ---
 
-[< 7. Workflow Avanzati e Scripting](./07-workflow-avanzati-e-scripting.md) | [Torna all'Indice](./index.md) | [9. Sicurezza e Gestione Enterprise >](./09-sicurezza-e-gestione-enterprise.md)
+[< 8. Esempio Pratico: Creare un Comando Custom](./08-esempio-pratico-comando-custom.md) | [Torna all'Indice](./index.md) | [10. Sicurezza e Gestione Enterprise >](./10-sicurezza-e-gestione-enterprise.md)
