@@ -42,7 +42,7 @@ Questo è il cuore del Context Engineering. Poiché la conoscenza dell'LLM è st
 
 #### 4. Strumenti Disponibili (Tool Use / Function Calling)
 
-Per superare il limite della conoscenza statica e della passività, possiamo dare all'LLM accesso a strumenti esterni (API, funzioni, calcolatrici). Questo componente del contesto non contiene dati, ma **definizioni** degli strumenti che il modello può decidere di utilizzare. Strumenti come la Gemini CLI, ad esempio, integrano funzionalità per la lettura/scrittura di file, l'esecuzione di comandi terminale e la ricerca web, che l'agente AI può invocare.
+Per superare il limite della conoscenza statica e della passività, possiamo dare all'LLM accesso a strumenti esterni (API, funzioni, calcolatrici). Questo componente del contesto non contiene dati, ma **definizioni** degli strumenti che il modello può decidere di utilizzare. L'LLM, basandosi su queste definizioni e sull'input dell'utente, **genera una chiamata allo strumento** (es. in formato JSON). È poi l'applicazione esterna (o l'agente AI che ospita l'LLM, come la Gemini CLI) a **eseguire effettivamente lo strumento** e a restituire il risultato all'LLM come nuova informazione nel contesto.
 
 - **Scopo:** Permettere all'IA di compiere azioni, ottenere informazioni in tempo reale o eseguire calcoli complessi.
 - **Esempio (definizione di uno strumento in formato JSON Schema):**

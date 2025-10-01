@@ -44,11 +44,18 @@ Questo ciclo permette all'LLM di affrontare problemi complessi, concatenare più
 
 ---
 
-### Esempio Pratico: Definire uno Strumento per Gemini CLI
+### Esempio Pratico: L'LLM e le Definizioni degli Strumenti in Gemini CLI
 
-Immaginiamo di voler dare a un assistente come Gemini CLI la capacità di leggere un file. Gemini CLI ha già questo strumento, ma vediamo come potremmo definirlo concettualmente usando JSON Schema.
+Gemini CLI, come agente AI, è dotata di un set di strumenti integrati (come `read_file`, `run_shell_command`, `web_search`) che può invocare. Il modo in cui l'LLM "conosce" questi strumenti e le loro funzionalità è attraverso le loro **definizioni**, spesso espresse in formato JSON Schema. Queste definizioni vengono fornite all'LLM nel contesto, permettendogli di ragionare su quale strumento utilizzare e con quali parametri.
 
-**Definizione dello Strumento `read_file`:**
+Per estendere le capacità di Gemini CLI con nuove funzionalità, si possono adottare due approcci principali:
+
+1.  **Comandi Custom:** Definire comandi personalizzati in file `.toml` all'interno delle directory `.gemini/commands/` (globali o di progetto). Questi comandi **sono modelli di prompt riutilizzabili** che l'LLM può invocare per eseguire azioni specifiche. Un comando custom può includere segnaposto per argomenti (`{{args}}`), l'output di comandi shell (`!{...}`) o il contenuto di file (`@{...}`), permettendo la costruzione dinamica del prompt finale. L'LLM, riconoscendo la necessità di eseguire una di queste azioni, può **generare un input testuale che corrisponde al nome e agli argomenti di un comando custom** (es. `/git:commit`). Gemini CLI intercetta e si occupa della loro esecuzione.
+2.  **Integrazione MCP:** Connettersi a server che implementano il **Model Context Protocol (MCP)**, i quali espongono funzionalità strutturate che l'LLM può invocare in modo standardizzato.
+
+Vediamo un esempio concettuale di come l'LLM _interpreta_ la definizione di uno strumento, prendendo come riferimento il tool `read_file` già presente in Gemini CLI.
+
+**Definizione Concettuale dello Strumento `read_file` (come vista dall'LLM):**
 
 ```json
 {
@@ -71,23 +78,20 @@ Immaginiamo di voler dare a un assistente come Gemini CLI la capacità di legger
 
 > **Utente:** "Mostrami il contenuto del file `src/config.js`"
 
-\*\*Processo Interno di Gemini CLI (basato su ReAct):
+**Processo Interno di Gemini CLI (basato su ReAct):**
 
 1.  **Thought:** L'utente vuole vedere il contenuto di un file. Il percorso fornito è relativo. Devo prima ottenere il percorso assoluto del progetto e poi usare lo strumento `read_file`.
-2.  **Act (interno):** Esegue un'azione interna per ottenere il CWD (Current Working Directory), es. `/Users/luca/mio-progetto`.
-3.  **Observation (interna):** Ottiene il percorso `/Users/luca/mio-progetto`.
-4.  **Thought:** Ora posso costruire il percorso assoluto: `/Users/luca/mio-progetto/src/config.js`. Posso usare lo strumento `read_file`.
-5.  **Act (chiamata allo strumento):** Genera la chiamata: `read_file(absolute_path="/Users/luca/mio-progetto/src/config.js")`.
+2.  **Act (interno):** Esegue un'azione interna per ottenere il CWD (Current Working Directory), es. `/Users/luca/mio-progetti`.
+3.  **Observation (interna):** Ottiene il percorso `/Users/luca/mio-progetti`.
+4.  **Thought:** Ora posso costruire il percorso assoluto: `/Users/luca/mio-progetti/src/config.js`. Posso usare lo strumento `read_file`.
+5.  **Act (chiamata allo strumento):** Genera la chiamata: `read_file(absolute_path="/Users/luca/mio-progetti/src/config.js")`.
 6.  **Observation:** L'ambiente di Gemini CLI esegue la lettura del file e restituisce il suo contenuto: `"const API_KEY = '...';"`.
 7.  **Thought:** Ho il contenuto del file. Posso mostrarlo all'utente.
 8.  **Risposta Finale:** "Ecco il contenuto di `src/config.js`:
-    ````javascript
+    ```javascript
     const API_KEY = '...';
-    ```"
-    ````
+    ```
 
 Questo esempio dimostra come il Tool Use permetta a un'applicazione AI di interagire in modo sicuro e strutturato con il sistema sottostante, trasformando richieste in linguaggio naturale in azioni concrete. È importante notare che il processo descritto è interno alla CLI e non un comando shell che l'utente digita direttamente.
-
----
 
 [< Indietro (Gestione della Memoria)](./05-gestione-della-memoria-conversazionale.md) | [Torna all'Indice](./index.md) | [Avanti (Metodologie SDLC) >](./07-prompt-spec-prd-driven-development.md)

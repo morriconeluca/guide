@@ -33,38 +33,29 @@ L'SDD è un approccio più strutturato e rigoroso. Invece di un prompt in lingua
 
 - **Concetto Chiave:** La specifica (spesso un file YAML o JSON) definisce input, output, invarianti e casi limite. Un agente AI (come Gemini CLI) usa questa specifica come contesto principale per generare, testare e validare il codice.
 
-- **Workflow Esempio (con Gemini CLI e Spec-Kit):**
+  - **Workflow Esempio (con Spec-Kit e un Agente AI):**
 
-  1.  **Definizione (Specifica):** Lo sviluppatore scrive una specifica usando un formato come quello proposto da `github/spec-kit`. Ad esempio, `api_validator.spec.yaml`:
-      ```yaml
-      name: apiValidator
-      description: Una funzione che valida un oggetto contro uno schema.
-      inputs:
-        - name: data
-          type: object
-          description: L'oggetto da validare.
-        - name: schema
-          type: object
-          description: Lo schema di validazione.
-      output:
-        type: boolean
-        description: True se l'oggetto è valido, altrimenti False.
-      examples:
-        - description: Caso di successo
-          inputs:
-            data: { user: 'test' }
-            schema: { properties: { user: { type: 'string' } } }
-          output: true
-      ```
-  2.  **Generazione (CLI):** Gemini CLI viene invocato con la specifica come contesto principale:
-      ```bash
-      # Il comando per la generazione da specifica non è direttamente supportato dalla versione attuale della CLI.
-      # La funzionalità di passare un file di specifica (`--spec`) non è presente nell'output di `gemini --help`.
-      # Potrebbe essere necessario un approccio diverso o un'estensione per supportare questo workflow.
-      ```
-  3.  **Test Automatico:** L'agente AI può usare la sezione `examples` della specifica per generare automaticamente unit test che verificano la correttezza dell'implementazione rispetto al contratto.
+  Spec-Kit è un framework che formalizza lo Spec Driven Development (SDD), trasformando la specifica in un artefatto vivente ed eseguibile. Non è una funzionalità integrata direttamente in Gemini CLI, ma un agente AI (come Gemini CLI, se opportunamente istruito e con accesso agli strumenti necessari) può agire come orchestratore all'interno di un workflow Spec-Kit.
 
-- **Vantaggi:** Garantisce maggiore robustezza e qualità del codice. La specifica funge da documentazione vivente e permette una validazione automatica, riducendo gli errori e le ambiguità.
+  1.  **Fase `specify`:** A partire da una descrizione di alto livello di una feature, un agente AI (o lo sviluppatore) utilizza il comando `/specify` di Spec-Kit per generare una specifica dettagliata (`spec.md`). Questa specifica include user journey, obiettivi e criteri di accettazione, spesso guidata da template e dalla "costituzione" del progetto.
+      ```
+      # Esempio concettuale di specifica generata da Spec-Kit
+      # (Non è un file YAML/JSON diretto per l'LLM, ma un documento strutturato)
+      # specs/my-feature/spec.md
+      ---
+      Feature: Gestione Utenti
+      Obiettivo: Permettere agli utenti di registrarsi e autenticarsi.
+      Criteri di Accettazione:
+      - Un utente può creare un nuovo account.
+      - Un utente può effettuare il login con credenziali valide.
+      - Un utente non può effettuare il login con credenziali non valide.
+      ---
+      ```
+  2.  **Fase `plan`:** Una volta approvata la specifica, l'agente AI (o lo sviluppatore) invoca il comando `/plan` di Spec-Kit. Questo genera un piano di implementazione tecnico (`plan.md`), definendo architettura, modelli dati, contratti API e scenari di test, sempre in conformità con la costituzione del progetto.
+  3.  **Fase `tasks`:** Il comando `/tasks` di Spec-Kit analizza il piano e genera una lista di task granulari ed eseguibili.
+  4.  **Implementazione e Test (con Agente AI):** A questo punto, un agente AI (come Gemini CLI) può essere utilizzato per implementare i singoli task. L'agente riceverebbe il contesto completo (specifica, piano, task) e utilizzerebbe i propri strumenti (es. `write_file`, `run_shell_command`) per generare il codice, i test unitari e di integrazione, verificando la conformità con la specifica e il piano.
+
+  - **Vantaggi:** Spec-Kit introduce un rigore ingegneristico nello sviluppo AI-driven. Riduce l'ambiguità, migliora la qualità e la coerenza del codice generato e garantisce che l'implementazione finale sia sempre allineata con le specifiche iniziali, con l'AI che assiste in ogni fase del processo).
 
 ---
 

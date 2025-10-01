@@ -8,17 +8,31 @@ In questo capitolo, analizzeremo due approcci avanzati che stanno definendo il f
 
 ### BMAD Method: Orchestrare un Team di Agenti AI
 
-Il **BMAD (Breakthrough Method for Agile AI-Driven Development)** è un framework che struttura lo sviluppo AI-driven simulando un team di sviluppo agile composto da diversi **agenti AI specializzati**.
+Il **BMAD (Breakthrough Method for Agile AI-Driven Development)** è un framework agile e strutturato per la pianificazione e lo sviluppo di progetti basati sull'IA. Si basa sulla simulazione di un team di sviluppo agile composto da diversi **agenti AI specializzati**, ognuno con un ruolo, contesto e obiettivi specifici.
 
-- **Concetto Chiave:** Invece di usare un unico LLM generico, il BMAD assegna ruoli specifici (Product Manager, Architect, Developer, QA, etc.) a diversi agenti AI. Ogni agente ha un proprio contesto, istruzioni e obiettivi, e collabora con gli altri in un flusso di lavoro orchestrato. Questo approccio si basa su un Context Engineering molto sofisticato, dove ogni agente riceve solo le informazioni pertinenti per il suo ruolo. Agenti come la Gemini CLI, con le sue capacità di tool-use e gestione del contesto, possono fungere da "Developer" o "QA" in questo framework.
+- **Concetto Chiave:** Il BMAD assegna ruoli distinti (Product Manager, Architetto, Sviluppatore, QA, Scrum Master, Product Owner) a diversi agenti AI. Questi agenti collaborano in un flusso di lavoro orchestrato, dove ogni agente riceve solo le informazioni pertinenti per il suo ruolo, sfruttando un Context Engineering sofisticato.
 
-- **Workflow Esempio (con Gemini CLI come motore degli agenti):**
+- **Workflow Dettagliato:**
 
-  1.  **Pianificazione con Agenti:** Un utente (umano) avvia il processo. L'agente "Product Manager" viene invocato per analizzare i requisiti di alto livello e generare un PRD strutturato. Successivamente, l'agente "Architect" prende in input il PRD per definire l'architettura tecnica, le tecnologie da usare e i contratti delle API.
-  2.  **Esecuzione Guidata:** Il piano dell'architetto viene passato all'agente "Developer". Questo agente non scrive tutto il codice in una volta, ma affronta un task alla volta, generando codice che rispetta l'architettura definita.
-  3.  **Validazione Continua:** L'agente "QA" riceve il codice generato e, basandosi sui requisiti del PRD e sulle specifiche tecniche, genera e esegue unit test e test di integrazione per validare il lavoro dell'agente Developer.
+  1.  **Fase di Pianificazione (Greenfield):**
 
-- **Vantaggi:** La specializzazione degli agenti permette di ottenere risultati di qualità superiore. Il processo è più controllato e meno prono a errori rispetto all'affidarsi a un singolo prompt onnicomprensivo. Il BMAD fornisce una struttura per gestire la complessità e orchestrare la collaborazione tra diverse istanze di LLM.
+      - Un agente "Product Manager" analizza i requisiti e genera un Product Requirements Document (PRD) strutturato (con FRs, NFRs, epiche e storie).
+      - Un agente "Architetto" definisce l'architettura del sistema basandosi sul PRD.
+      - Un agente "QA" può fornire input sulla strategia di test per aree ad alto rischio.
+      - Un agente "Product Owner" valida i documenti e assicura l'allineamento.
+      - La pianificazione si conclude con la suddivisione dei documenti in epiche e storie.
+
+  2.  **Fase di Sviluppo (IDE):**
+      - Un agente "Scrum Master" gestisce il flusso di lavoro.
+      - Per storie ad alto rischio, l'agente "QA" valuta i rischi (`*risk`) e progetta la strategia di test (`*design`).
+      - L'agente "Sviluppatore" implementa il codice e i test per i task assegnati.
+      - L'agente "QA" esegue controlli intermedi (`*trace`, `*nfr`) e una revisione completa (`*review`), decidendo sul "Quality Gate".
+
+- **Agenti Speciali:** Il BMAD include agenti con ruoli specifici come `BMad-Master` (agente "tuttofare"), `BMad-Orchestrator` (per piattaforme web) e `Test Architect (Quinn)` (l'agente QA, esperto in strategia di test e quality gates, con comandi come `*risk`, `*design`, `*trace`, `*nfr`, `*review`, `*gate`).
+
+- **Integrazione e Configurazione:** Il BMAD si integra con strumenti come OpenCode e OpenAI Codex. Utilizza file di configurazione come `technical-preferences.md` (per raccomandazioni tecniche) e `core-config.yaml` (per definire file da caricare nel contesto degli agenti).
+
+- **Vantaggi:** La specializzazione degli agenti e il workflow strutturato permettono di ottenere risultati di qualità superiore, un processo più controllato e una migliore gestione del rischio rispetto all'affidarsi a un singolo LLM generico. Il BMAD fornisce una struttura robusta per gestire la complessità e orchestrare la collaborazione tra diverse istanze di LLM.
 
 ---
 

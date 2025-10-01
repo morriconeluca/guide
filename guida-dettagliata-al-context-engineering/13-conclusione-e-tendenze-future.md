@@ -1,4 +1,4 @@
-# 15. Conclusione e Tendenze Future
+# 13. Conclusione e Tendenze Future
 
 Siamo giunti alla fine della nostra guida al Context Engineering. Abbiamo intrapreso un viaggio che ci ha portati dalla semplice creazione di un prompt alla progettazione di complessi ecosistemi informativi. Abbiamo visto come fornire a un LLM il contesto giusto, nel formato giusto e al momento giusto sia la chiave per sbloccare il suo vero potenziale.
 
@@ -53,4 +53,4 @@ Il viaggio nel Context Engineering è appena iniziato, e le opportunità per inn
 
 ---
 
-[< Indietro (Progettare e Valutare)](./14-progettare-e-valutare-sistemi-context-aware.md) | [Torna all'Indice](./index.md)
+[< Indietro (Progettare e Valutare)](./12-progettare-e-valutare-sistemi-context-aware.md) | [Torna all'Indice](./index.md)
