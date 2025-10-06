@@ -74,8 +74,4 @@ Questo approccio è potente perché organizza il codice in base a come il busine
 
 ---
 
-[< Capitolo Precedente: 05 - L'Architettura Urla il suo Scopo](./05-l-architettura-urla-il-suo-scopo.md)
-
-[> Capitolo Successivo: 07 - I Dettagli: Database, Web e Framework](./07-i-dettagli-database-web-framework.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (L'Architettura Urla il suo Scopo)](./05-l-architettura-urla-il-suo-scopo.md) | [Torna all'Indice](./index.md) | [Avanti (I Dettagli: Database, Web e Framework) >](./07-i-dettagli-database-web-framework.md)

@@ -138,8 +138,4 @@ Abbiamo disaccoppiato la nostra logica di business dai dettagli, ottenendo un si
 
 ---
 
-[< Capitolo Precedente: 05 - ISP: Interfacce Leggere per le Funzioni](./05-isp-interfacce-leggere-per-le-funzioni.md)
-
-[> Capitolo Successivo: 07 - Conclusione: SOLID come Filosofia di Design](./07-conclusione-solid-come-filosofia.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (ISP: Interfacce Leggere per le Funzioni)](./05-isp-interfacce-leggere-per-le-funzioni.md) | [Torna all'Indice](./index.md) | [Avanti (Conclusione: SOLID come Filosofia di Design) >](./07-conclusione-solid-come-filosofia.md)

@@ -106,8 +106,4 @@ Ora, se la logica di calcolo cambia, modifichiamo solo `sales-calculator.ts`. Se
 
 ---
 
-[< Capitolo Precedente: 01 - Introduzione: SOLID Oltre l'OOP](./01-introduzione-solid-oltre-oop.md)
-
-[> Capitolo Successivo: 03 - OCP: Estensione tramite Composizione e Funzioni di Ordine Superiore](./03-ocp-estensione-tramite-composizione.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (Introduzione: SOLID Oltre l'OOP)](./01-introduzione-solid-oltre-oop.md) | [Torna all'Indice](./index.md) | [Avanti (OCP: Estensione tramite Composizione e Funzioni di Ordine Superiore) >](./03-ocp-estensione-tramite-composizione.md)

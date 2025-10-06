@@ -54,8 +54,4 @@ Nel prossimo capitolo, vedremo in dettaglio come implementare una struttura basa
 
 ---
 
-[< Capitolo Precedente: 04 - Attraversare i Confini con i DTO](./04-attraversare-i-confini-con-i-dto.md)
-
-[> Capitolo Successivo: 06 - Esempio: Struttura per Funzionalità (Feature-based)](./06-esempio-struttura-per-funzionalita-feature-based.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (Attraversare i Confini con i DTO)](./04-attraversare-i-confini-con-i-dto.md) | [Torna all'Indice](./index.md) | [Avanti (Esempio: Struttura per Funzionalità (Feature-based)) >](./06-esempio-struttura-per-funzionalita-feature-based.md)

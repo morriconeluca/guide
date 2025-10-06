@@ -30,6 +30,4 @@ Che tu stia scrivendo in Java, C#, Python, Go, Rust o JavaScript, che tu preferi
 
 ---
 
-[< Capitolo Precedente: 06 - DIP: Invertire le Dipendenze con le Funzioni](./06-dip-invertire-le-dipendenze-con-le-funzioni.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (DIP: Invertire le Dipendenze con le Funzioni)](./06-dip-invertire-le-dipendenze-con-le-funzioni.md) | [Torna all'Indice](./index.md)

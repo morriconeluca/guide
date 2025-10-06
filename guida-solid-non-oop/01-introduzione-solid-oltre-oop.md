@@ -22,6 +22,4 @@ In questa guida, intraprenderemo un esercizio di "traduzione". Prenderemo l'esse
 
 ---
 
-[> Capitolo Successivo: 02 - SRP: Responsabilità a Livello di Modulo](./02-srp-responsabilita-a-livello-di-modulo.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (Indice)](./index.md) | [Avanti (SRP: Responsabilità a Livello di Modulo) >](./02-srp-responsabilita-a-livello-di-modulo.md)

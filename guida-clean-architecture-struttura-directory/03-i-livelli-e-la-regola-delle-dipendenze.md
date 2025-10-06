@@ -86,8 +86,4 @@ Un `import` da `application` a `infrastructure` sarebbe una violazione diretta d
 
 ---
 
-[< Capitolo Precedente: 02 - I Principi SOLID nella Struttura del Codice](./02-i-principi-solid-nella-struttura-del-codice.md)
-
-[> Capitolo Successivo: 04 - Attraversare i Confini con i DTO](./04-attraversare-i-confini-con-i-dto.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (I Principi SOLID nella Struttura del Codice)](./02-i-principi-solid-nella-struttura-del-codice.md) | [Torna all'Indice](./index.md) | [Avanti (Attraversare i Confini con i DTO) >](./04-attraversare-i-confini-con-i-dto.md)

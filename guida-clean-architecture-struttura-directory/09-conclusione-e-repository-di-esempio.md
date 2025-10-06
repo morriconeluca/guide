@@ -32,6 +32,4 @@ Esplorare questi repository, leggere il loro codice e capire le decisioni prese 
 
 ---
 
-[< Capitolo Precedente: 08 - Organizzare i Test](./08-organizzare-i-test.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (Organizzare i Test)](./08-organizzare-i-test.md) | [Torna all'Indice](./index.md)

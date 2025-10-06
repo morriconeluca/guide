@@ -83,8 +83,4 @@ L'LSP, in un contesto funzionale, ci impone di essere rigorosi con le firme dell
 
 ---
 
-[< Capitolo Precedente: 03 - OCP: Estensione tramite Composizione e Funzioni di Ordine Superiore](./03-ocp-estensione-tramite-composizione.md)
-
-[> Capitolo Successivo: 05 - ISP: Interfacce Leggere per le Funzioni](./05-isp-interfacce-leggere-per-le-funzioni.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (OCP: Estensione tramite Composizione e Funzioni di Ordine Superiore)](./03-ocp-estensione-tramite-composizione.md) | [Torna all'Indice](./index.md) | [Avanti (ISP: Interfacce Leggere per le Funzioni) >](./05-isp-interfacce-leggere-per-le-funzioni.md)

@@ -122,8 +122,4 @@ Abbiamo aggiunto una nuova logica di business senza modificare una sola riga di 
 
 ---
 
-[< Capitolo Precedente: 02 - SRP: Responsabilità a Livello di Modulo](./02-srp-responsabilita-a-livello-di-modulo.md)
-
-[> Capitolo Successivo: 04 - LSP: Il Principio dei Contratti Comportamentali](./04-lsp-il-principio-dei-contratti-comportamentali.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (SRP: Responsabilità a Livello di Modulo)](./02-srp-responsabilita-a-livello-di-modulo.md) | [Torna all'Indice](./index.md) | [Avanti (LSP: Il Principio dei Contratti Comportamentali) >](./04-lsp-il-principio-dei-contratti-comportamentali.md)

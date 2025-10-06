@@ -39,6 +39,4 @@ Nei prossimi capitoli, vedremo come questi principi si traducono in pratica nell
 
 ---
 
-[> Capitolo Successivo: 02 - I Principi SOLID nella Struttura del Codice](./02-i-principi-solid-nella-struttura-del-codice.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (Indice)](./index.md) | [Avanti (I Principi SOLID) >](./02-i-principi-solid-nella-struttura-del-codice.md)

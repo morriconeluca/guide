@@ -97,8 +97,4 @@ In questo modo, `application` non sa nulla di `infrastructure`. È `infrastructu
 
 ---
 
-[< Capitolo Precedente: 01 - Introduzione ai Valori dell'Architettura](./01-introduzione-ai-valori-dell-architettura.md)
-
-[> Capitolo Successivo: 03 - I Livelli e la Regola delle Dipendenze](./03-i-livelli-e-la-regola-delle-dipendenze.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (Introduzione ai Valori dell'Architettura)](./01-introduzione-ai-valori-dell-architettura.md) | [Torna all'Indice](./index.md) | [Avanti (I Livelli e la Regola delle Dipendenze) >](./03-i-livelli-e-la-regola-delle-dipendenze.md)

@@ -78,8 +78,4 @@ Trattando questi elementi come dettagli, si ottiene un'architettura flessibile, 
 
 ---
 
-[< Capitolo Precedente: 06 - Esempio: Struttura per Funzionalità (Feature-based)](./06-esempio-struttura-per-funzionalita-feature-based.md)
-
-[> Capitolo Successivo: 08 - Organizzare i Test](./08-organizzare-i-test.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (Esempio: Struttura per Funzionalità (Feature-based))](./06-esempio-struttura-per-funzionalita-feature-based.md) | [Torna all'Indice](./index.md) | [Avanti (Organizzare i Test) >](./08-organizzare-i-test.md)

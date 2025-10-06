@@ -68,8 +68,4 @@ L'uso dei DTO garantisce che i dati che attraversano i confini siano strutture s
 
 ---
 
-[< Capitolo Precedente: 03 - I Livelli e la Regola delle Dipendenze](./03-i-livelli-e-la-regola-delle-dipendenze.md)
-
-[> Capitolo Successivo: 05 - L'Architettura Urla il suo Scopo](./05-l-architettura-urla-il-suo-scopo.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (I Livelli e la Regola delle Dipendenze)](./03-i-livelli-e-la-regola-delle-dipendenze.md) | [Torna all'Indice](./index.md) | [Avanti (L'Architettura Urla il suo Scopo) >](./05-l-architettura-urla-il-suo-scopo.md)

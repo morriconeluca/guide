@@ -82,8 +82,4 @@ Questa struttura di test, allineata alla Clean Architecture, garantisce una cope
 
 ---
 
-[< Capitolo Precedente: 07 - I Dettagli: Database, Web e Framework](./07-i-dettagli-database-web-framework.md)
-
-[> Capitolo Successivo: 09 - Conclusione e Repository di Esempio](./09-conclusione-e-repository-di-esempio.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (I Dettagli: Database, Web e Framework)](./07-i-dettagli-database-web-framework.md) | [Torna all'Indice](./index.md) | [Avanti (Conclusione e Repository di Esempio) >](./09-conclusione-e-repository-di-esempio.md)

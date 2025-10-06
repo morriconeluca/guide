@@ -92,8 +92,4 @@ Applicando l'ISP, abbiamo reso la nostra funzione più robusta, riutilizzabile e
 
 ---
 
-[< Capitolo Precedente: 04 - LSP: Il Principio dei Contratti Comportamentali](./04-lsp-il-principio-dei-contratti-comportamentali.md)
-
-[> Capitolo Successivo: 06 - DIP: Invertire le Dipendenze con le Funzioni](./06-dip-invertire-le-dipendenze-con-le-funzioni.md)
-
-[< Torna all'Indice](./index.md)
+[< Indietro (LSP: Il Principio dei Contratti Comportamentali)](./04-lsp-il-principio-dei-contratti-comportamentali.md) | [Torna all'Indice](./index.md) | [Avanti (DIP: Invertire le Dipendenze con le Funzioni) >](./06-dip-invertire-le-dipendenze-con-le-funzioni.md)
