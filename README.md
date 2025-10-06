@@ -19,9 +19,11 @@ Qui sotto trovi l'elenco delle guide attualmente disponibili. Ogni guida è un p
   _Una guida completa per installare, configurare e padroneggiare l'agente AI di Google da riga di comando._
 
 - ### [Guida Dettagliata al Context Engineering](./guida-dettagliata-al-context-engineering/index.md)
+
   _Una guida approfondita su come costruire e gestire il contesto per i modelli linguistici di grandi dimensioni._
 
-- ### [Applicare la Clean Architecture alla Struttura delle Directory](./guida-clean-architecture-struttura-directory/index.md)
+- ### [Guida a Come Applicare la Clean Architecture alla Struttura delle Directory](./guida-clean-architecture-struttura-directory/index.md)
+
   _Una guida pratica per tradurre i principi della Clean Architecture in una struttura di directory robusta e manutenibile._
 
 - ### [Guida Dettagliata ai Principi SOLID in un Contesto Non-OOP](./guida-solid-non-oop/index.md)

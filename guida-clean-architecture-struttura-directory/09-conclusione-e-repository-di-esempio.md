@@ -28,7 +28,7 @@ La teoria è utile, ma vedere come questi concetti vengono applicati in progetti
     *   **Struttura:** Un archetipo di codice che serve come ottimo punto di partenza per nuovi progetti. Utilizza una struttura ibrida che mescola i layer con una suddivisione per moduli.
     *   **Da notare:** Fornisce esempi chiari per la creazione di servizi, modelli e controller, rendendolo molto pratico per chi vuole iniziare a scrivere codice velocemente seguendo questi principi.
 
-Esplorare questi repository, leggere il loro codice e capire le decisioni prese dagli autori è il passo successivo per interiorizzare veramente i concetti della Clean Architecture e applicarli con successo nei tuoi progetti.
+Esplorare questi repository, leggere il loro codice e capire le decisioni prese dagli autori è il passo successivo per interiorizzare veramente i concetti della Clean Architecture e applicarli con successo nei propri progetti.
 
 ---
 

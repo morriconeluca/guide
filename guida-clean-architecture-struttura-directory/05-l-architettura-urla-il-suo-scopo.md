@@ -1,6 +1,6 @@
 ## 05 - L'Architettura Urla il suo Scopo
 
-Cosa dovrebbe comunicare la struttura di directory di primo livello del tuo progetto? Se la prima cosa che vedi sono cartelle come `controllers`, `views`, `models` o `framework-config`, la tua architettura sta "urlando" il nome del framework che stai usando, non lo scopo del tuo software.
+Cosa dovrebbe comunicare la struttura di directory di primo livello di un progetto? Se la prima cosa che si vede sono cartelle come `controllers`, `views`, `models` o `framework-config`, l'architettura sta "urlando" il nome del framework in uso, non lo scopo del software.
 
 Una buona architettura, invece, **urla il suo dominio di business**. Questo è il principio della "Screaming Architecture".
 
@@ -46,9 +46,9 @@ Questa struttura ha vantaggi enormi:
 
 ### I Framework sono Strumenti, non Stili di Vita
 
-I framework sono utili, ma sono un dettaglio implementativo. Sono strumenti da usare, non fondamenta a cui legarsi. La tua architettura non dovrebbe essere costruita *attorno* al framework. Al contrario, il framework dovrebbe essere un *plugin* per la tua applicazione.
+I framework sono utili, ma sono un dettaglio implementativo. Sono strumenti da usare, non fondamenta a cui legarsi. L'architettura non dovrebbe essere costruita *attorno* al framework. Al contrario, il framework dovrebbe essere un *plugin* per l'applicazione.
 
-Quando la tua architettura urla il suo scopo, stai trattando il framework come un dettaglio. Quando urla il nome del framework, hai permesso al dettaglio di diventare il cuore dell'architettura, violando i principi della Clean Architecture.
+Quando un'architettura urla il suo scopo, il framework viene trattato come un dettaglio. Quando urla il nome del framework, si è permesso al dettaglio di diventare il cuore dell'architettura, violando i principi della Clean Architecture.
 
 Nel prossimo capitolo, vedremo in dettaglio come implementare una struttura basata sulle funzionalità (o feature), che è l'applicazione pratica di questo principio.
 

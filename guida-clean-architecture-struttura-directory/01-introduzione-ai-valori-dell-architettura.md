@@ -14,7 +14,7 @@ L'errore più comune è sacrificare l'importanza della struttura per l'urgenza d
 
 ### La Matrice di Eisenhower applicata al Software
 
-La guida che hai fornito usa una metafora efficace per descrivere questo conflitto: la matrice di Eisenhower, che classifica le attività in base alla loro urgenza e importanza.
+Una metafora efficace per descrivere questo conflitto: la matrice di Eisenhower, che classifica le attività in base alla loro urgenza e importanza.
 
 | | URGENTE | NON URGENTE |
 | :--- | :--- | :--- |

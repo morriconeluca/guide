@@ -26,7 +26,7 @@ Questo ci porta a un'architettura:
 *   **Testabile:** La logica di business può essere testata in isolamento, senza dipendere da database, API esterne o file system.
 *   **Flessibile e Manutenibile:** Il sistema può evolvere per soddisfare nuovi requisiti con uno sforzo prevedibile e localizzato.
 
-Che tu stia scrivendo in Java, C#, Python, Go, Rust o JavaScript, che tu preferisca uno stile orientato agli oggetti, funzionale o procedurale, i principi SOLID rimangono una guida senza tempo per costruire software che duri, che sia piacevole da mantenere e che porti valore nel lungo periodo. Non sono regole su come usare un linguaggio, ma una filosofia su come costruire sistemi.
+Indipendentemente dal linguaggio utilizzato (Java, C#, Python, Go, Rust o JavaScript) e dallo stile preferito (orientato agli oggetti, funzionale o procedurale), i principi SOLID rimangono una guida senza tempo per costruire software che duri, che sia piacevole da mantenere e che porti valore nel lungo periodo. Non sono regole su come usare un linguaggio, ma una filosofia su come costruire sistemi.
 
 ---
 

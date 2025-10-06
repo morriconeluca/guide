@@ -1,6 +1,6 @@
 # Guida Dettagliata ai Principi SOLID in un Contesto Non-OOP
 
-Benvenuto in questa guida dedicata all'applicazione dei principi SOLID al di fuori del loro tradizionale contesto orientato agli oggetti.
+Questa guida è dedicata all'applicazione dei principi SOLID al di fuori del loro tradizionale contesto orientato agli oggetti.
 
 Sebbene nati nel mondo OOP, i principi SOLID rappresentano una filosofia di progettazione universale per creare software robusto, manutenibile e flessibile. Il loro vero scopo non è gestire le classi, ma governare le dipendenze tra i moduli software.
 

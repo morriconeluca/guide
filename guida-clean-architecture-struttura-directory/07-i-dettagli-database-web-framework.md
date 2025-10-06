@@ -6,7 +6,7 @@ In una struttura di directory ben organizzata, questa separazione è fisica e vi
 
 ### Il Database è un Dettaglio
 
-Le tue entità e i tuoi casi d'uso non devono sapere se stai usando PostgreSQL, MongoDB o un semplice file JSON. Questa decisione può essere posticipata e dovrebbe essere facile da cambiare.
+Le entità e i casi d'uso non devono sapere se viene usato PostgreSQL, MongoDB o un semplice file JSON. Questa decisione può essere posticipata e dovrebbe essere facile da cambiare.
 
 **Dove va il codice:**
 
@@ -37,7 +37,7 @@ Il codice specifico del database risiede nel layer `infrastructure`. Questo incl
 
 ### Il Web è un Dettaglio
 
-La tua applicazione potrebbe essere esposta tramite un'API REST, GraphQL, un'interfaccia a riga di comando (CLI) o una GUI desktop. I tuoi casi d'uso non dovrebbero essere influenzati da questa scelta.
+L'applicazione potrebbe essere esposta tramite un'API REST, GraphQL, un'interfaccia a riga di comando (CLI) o una GUI desktop. I casi d'uso non dovrebbero essere influenzati da questa scelta.
 
 **Dove va il codice:**
 
